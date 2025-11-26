@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remonty</title>
+    <link rel="stylesheet" href="styl.css">
+</head>
+<body>
+    <header>
+        <h1>Malowanie i gipsowanie</h1>
+    </header>
+    <main>
+        <div id="nis">
+            <nav>
+                <a href="kontakt.html">Kontakt</a>
+                <a href="https://remonty.pl" target="_blank">Partnerzy</a>
+            </nav>
+            <div id="s">
+                <section id="lewa">
+                    <h2>Dla klientów</h2>
+                    <form action="zlecenia.php" method="POST">
+                        <label for="pracownicy">Ilu co najmniej pracowników potrzebujesz?</label>
+                        <input type="number" name="pracownicy" id="pracownicy">
+                        <button id="szukajWyk" name="szukajWyk">Szukaj firm</button>
+                        
+                    </form>
+                    <!--<?php
+                        $db = mysqli_connect("localhost","root","","remonty");
+                        if (isset($_POST['szukajWyk']))
+                        {
+                            $liczba_prac = $_POST['pracownicy'];
+                            $zapytanie1 = "SELECT nazwa_firmy, liczba_pracownikow FROM wykonawcy WHERE liczba_pracownikow >= $liczba_prac";
+                            $wynik1 = mysqli_query($db,$zapytanie1);
+
+                            while ($w1=mysqli_fetch_array($wynik1))
+                            {
+                                echo "<p>".$w1['nazwa_firmy'].", ".$w1['liczba_pracownikow']." pracowników</p>";
+                            }
+                        }
+                    ?>-->
+                </section>
+                <section id="srodek">
+                    <h2>Dla wykonawców</h2>
+                    <form action="zlecenia.php" method="POST">
+                        <select name="miasto" id="miasto">
+                            <!--<?php
+                                $zapytanie2 = "SELECT DISTINCT miasto FROM klienci ORDER BY miasto";
+                                $wynik2 = mysqli_query($db,$zapytanie2);
+
+                                while ($w2=mysqli_fetch_array($wynik2))
+                                {
+                                    echo "<option value='".$w2['miasto']."'>".$w2['miasto']."</option>";
+                                }
+                            ?>-->
+                        </select>
+                        <br>
+                        <input type="radio" name="usluga" id="malowanie" value="malowanie" checked>
+                        <label for="malowanie">malowanie</label>
+                        <br>
+                        <input type="radio" name="usluga" id="gipsowanie" value="gipsowanie">
+                        <label for="gipsowanie">gipsowanie</label>
+                        <br>
+                        <button id="szukajZle" name="szukajZle">Szukaj klientów</button>
+                    </form>
+                    <ul>
+                        <!--<?php
+                            if (isset($_POST['szukajZle']))
+                            {
+                                $miasto = $_POST['miasto'];
+                                $usluga = $_POST['usluga'];
+                                $zapytanie3 = "SELECT imie, cena FROM klienci INNER JOIn zlecenia ON zlecenia.id_klienta=klienci.id_klienta WHERE miasto = '$miasto' and rodzaj = '$usluga'";
+                                $wynik3 = mysqli_query($db,$zapytanie3);
+
+                                while ($w3=mysqli_fetch_array($wynik3))
+                                {
+                                    echo "<li>".$w3['imie']." - ".$w3['cena']."</li>";
+                                }
+                            }
+
+                            mysqli_close($db);
+                        ?>-->
+                    </ul>
+                </section>
+            </div>
+        </div>
+        <aside>
+            <img src="tapeta_lewa.png" alt="usługi">
+            <img src="tapeta_prawa.png" alt="usługi">
+            <img src="tapeta_lewa.png" alt="usługi">
+        </aside>
+    </main>
+    <footer>
+        <strong><p>Stronę wykonał: MW</p></strong>
+    </footer>
+</body>
+</html>
